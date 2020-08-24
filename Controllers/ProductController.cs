@@ -15,14 +15,10 @@ namespace bespoked_bike.Controllers
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new Product
+            using (var db = new BeSpokedBikesContext())
             {
-                ProductId = index,
-                ProductName = "Product Name",
-                QtyOnHand = rng.Next()
-            })
-            .ToArray();
+                return db.Product.Select(p => p).ToList();
+            }
         }
     }
 }
