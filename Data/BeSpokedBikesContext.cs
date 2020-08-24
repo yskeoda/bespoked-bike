@@ -1,8 +1,9 @@
 ﻿using System;
+using bespoked_bike.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace bespoked_bike.Models
+namespace bespoked_bike.Data
 {
     public partial class BeSpokedBikesContext : DbContext
     {

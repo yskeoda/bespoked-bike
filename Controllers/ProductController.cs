@@ -1,10 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using bespoked_bike.Data;
 using bespoked_bike.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace bespoked_bike.Controllers
 {
@@ -12,13 +12,24 @@ namespace bespoked_bike.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        [HttpGet]
-        public IEnumerable<Product> Get()
+        private readonly BeSpokedBikesContext _context;
+
+        public ProductController(BeSpokedBikesContext context)
         {
-            using (var db = new BeSpokedBikesContext())
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Product>>> Get()
+        {
+            var products = await _context.Product.ToListAsync();
+
+            if (products == null)
             {
-                return db.Product.Select(p => p).ToList();
+                return NotFound();
             }
+
+            return products;
         }
     }
 }
