@@ -13,6 +13,6 @@ export class AppComponent {
 
   getTestData(): void {
     // TODO Delete test to verify that I can interact with server side code.
-    this.httpClient.get('WeatherForecast').subscribe((v) => console.log(v));
+    this.httpClient.get('Product').subscribe((v) => console.log(v));
   }
 }
