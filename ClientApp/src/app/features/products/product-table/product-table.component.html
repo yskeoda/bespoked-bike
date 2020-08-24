@@ -42,7 +42,12 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      class="selection-cursor"
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="onRowClick(row.productId)"
+    ></tr>
   </table>
 
   <mat-paginator

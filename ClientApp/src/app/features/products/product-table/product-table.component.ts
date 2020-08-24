@@ -3,6 +3,8 @@ import {
   Component,
   Input,
   OnInit,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { Product } from './../../../data/product/product.model';
 
@@ -14,6 +16,7 @@ import { Product } from './../../../data/product/product.model';
 })
 export class ProductTableComponent implements OnInit {
   @Input() data: Product[] = new Array<Product>();
+  @Output() rowClick = new EventEmitter<number>();
 
   displayedColumns = [
     'productName',
@@ -26,4 +29,8 @@ export class ProductTableComponent implements OnInit {
   ];
 
   ngOnInit(): void {}
+
+  onRowClick(productId: number): void {
+    this.rowClick.emit(productId);
+  }
 }
