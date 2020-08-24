@@ -1,13 +1,10 @@
-import { SalesListRow } from './../../../data/sales/sales-list-row.model';
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
   OnInit,
-  Output,
-  EventEmitter,
 } from '@angular/core';
-import { Product } from '../../../data/product/product.model';
+import { SalesListRow } from './../../../data/sales/sales-list-row.model';
 
 @Component({
   selector: 'app-sales-table',
