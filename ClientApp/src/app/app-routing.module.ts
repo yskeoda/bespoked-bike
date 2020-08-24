@@ -1,6 +1,5 @@
-import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -9,6 +8,11 @@ const routes: Routes = [
       import('./features/products/products.module').then(
         (m) => m.ProductsModule
       ),
+  },
+  {
+    path: 'sales',
+    loadChildren: () =>
+      import('./features/sales/sales.module').then((m) => m.SalesModule),
   },
   { path: '**', redirectTo: 'products' },
 ];
