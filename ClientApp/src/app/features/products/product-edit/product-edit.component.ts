@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, shareReplay, switchMap } from 'rxjs/operators';
+import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { Product } from './../../../data/product/product.model';
 import { ProductService } from './../../../data/product/product.service';
 
@@ -37,7 +37,8 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.product$ = this.route.queryParams.pipe(
-      map((params) => params.productId),
+      map((params) => Number(params.productId)),
+      filter((id) => id > 0),
       switchMap((id) => {
         this.productId = id;
         return this.productService.getById(id);

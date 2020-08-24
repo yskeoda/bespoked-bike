@@ -20,7 +20,17 @@ export class ProductService {
   }
 
   put(product: Product): Observable<any> {
-    return this.httpClient.put(`${this.path}`, JSON.stringify(product), {
+    return this.httpClient.put(
+      `${this.path}/${product.productId}`,
+      JSON.stringify(product),
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      }
+    );
+  }
+
+  post(product: Product): Observable<any> {
+    return this.httpClient.post(`${this.path}`, JSON.stringify(product), {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     });
   }
