@@ -1,4 +1,12 @@
 <ng-container *ngIf="tableData$ | async as tableData; else loading">
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    style="margin-bottom: 10px;"
+  >
+    New Sales
+  </button>
   <app-sales-table [data]="tableData"></app-sales-table>
 </ng-container>
 <ng-template #loading
