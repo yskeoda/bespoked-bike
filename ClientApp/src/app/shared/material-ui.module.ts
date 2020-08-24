@@ -5,5 +5,6 @@ import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [MatTableModule, MatPaginatorModule, MatSortModule],
+  exports: [MatTableModule, MatPaginatorModule, MatSortModule],
 })
 export class MaterialUiModule {}
