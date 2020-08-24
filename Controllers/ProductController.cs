@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bespoked_bike.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
