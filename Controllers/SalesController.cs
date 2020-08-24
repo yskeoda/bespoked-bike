@@ -8,6 +8,8 @@ using System.Linq;
 
 namespace bespoked_bike.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class SalesController : ControllerBase
     {
         private readonly BeSpokedBikesContext _context;
