@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { ProductService } from '../../../data/product/product.service';
 
 @Component({
@@ -19,6 +19,11 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {}
 
   onRowClick(productId: number): void {
-    console.log('event emit - row click ', productId);
+    const navExtras: NavigationExtras = {
+      relativeTo: this.route,
+      queryParams: { productId },
+    };
+
+    this.router.navigate(['edit'], navExtras);
   }
 }
