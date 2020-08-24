@@ -1,4 +1,4 @@
-<ng-container *ngIf="product$ | async as product; else loading">
+<ng-container *ngIf="product$ | async; else loading">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
       <mat-form-field class="form-field">
