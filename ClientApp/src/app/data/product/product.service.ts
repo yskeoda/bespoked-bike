@@ -1,5 +1,5 @@
 import { Product } from './product.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -17,5 +17,11 @@ export class ProductService {
 
   getById(id: number): Observable<Product> {
     return this.httpClient.get<Product>(`${this.path}/${id}`);
+  }
+
+  put(product: Product): Observable<any> {
+    return this.httpClient.put(`${this.path}`, JSON.stringify(product), {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
   }
 }
