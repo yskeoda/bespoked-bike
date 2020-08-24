@@ -1,30 +1,38 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { ProductTableDataSource, ProductTableItem } from './product-table-datasource';
+import { Product } from './../../../data/product/product.model';
+import {
+  ProductTableDataSource,
+  ProductTableItem,
+} from './product-table-datasource';
 
 @Component({
   selector: 'app-product-table',
   templateUrl: './product-table.component.html',
-  styleUrls: ['./product-table.component.scss']
+  styleUrls: ['./product-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductTableComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<ProductTableItem>;
-  dataSource: ProductTableDataSource;
+export class ProductTableComponent implements OnInit {
+  @Input() data: Product[] = new Array<Product>();
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = [
+    'productName',
+    'manufacturer',
+    'style',
+    'purchasePrice',
+    'salePrice',
+    'qtyOnHand',
+    'commissionPercentage',
+  ];
 
-  ngOnInit() {
-    this.dataSource = new ProductTableDataSource();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
-  }
+  ngOnInit(): void {}
 }

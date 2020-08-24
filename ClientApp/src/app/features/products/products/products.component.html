@@ -1,1 +1,6 @@
-<app-product-table></app-product-table>
+<ng-container *ngIf="tableData$ | async as tableData; else elseBlock">
+  <app-product-table [data]="tableData"></app-product-table>
+</ng-container>
+<ng-template #elseBlock
+  ><mat-progress-bar mode="indeterminate"></mat-progress-bar
+></ng-template>
