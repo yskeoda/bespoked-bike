@@ -20,7 +20,7 @@ namespace bespoked_bike.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> Get()
+        public async Task<ActionResult<IEnumerable<Product>>> GetAll()
         {
             var products = await _context.Product.ToListAsync();
 
@@ -31,5 +31,39 @@ namespace bespoked_bike.Controllers
 
             return products;
         }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProduct(int id, Product product)
+        {
+            if (id != product.ProductId)
+            {
+                return BadRequest();
+            }
+
+            // Mark as modified to let context save
+            _context.Entry(product).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool ProductExists(int id) =>
+      _context.Product.Any(e => e.ProductId == id);
     }
 }
