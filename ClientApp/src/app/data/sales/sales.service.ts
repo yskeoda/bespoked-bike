@@ -11,10 +11,10 @@ export class SalesService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getSalesList(beginDate: Date, endDate: Date): Observable<SalesListRow[]> {
+  getSalesList(beginDate?: Date, endDate?: Date): Observable<SalesListRow[]> {
     let params = new HttpParams();
-    params = params.append('beginDate', beginDate.toISOString());
-    params = params.append('endDate', endDate.toISOString());
+    params = beginDate ? params.append('beginDate', beginDate.toISOString()) : params;
+    params = endDate ? params.append('endDate', endDate.toISOString()) : params;
 
     return this.httpClient.get<SalesListRow[]>(`${this.path}`, {
       params,

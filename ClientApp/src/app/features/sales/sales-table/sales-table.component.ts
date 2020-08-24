@@ -1,3 +1,4 @@
+import { SalesListRow } from './../../../data/sales/sales-list-row.model';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,22 +16,16 @@ import { Product } from '../../../data/product/product.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SalesTableComponent implements OnInit {
-  @Input() data: Product[] = new Array<Product>();
-  @Output() rowClick = new EventEmitter<number>();
+  @Input() data: SalesListRow[] = new Array<SalesListRow>();
 
   displayedColumns = [
     'productName',
-    'manufacturer',
-    'style',
-    'purchasePrice',
-    'salePrice',
-    'qtyOnHand',
-    'commissionPercentage',
+    'customerName',
+    'salesDate',
+    'price',
+    'salesPersonName',
+    'commission',
   ];
 
   ngOnInit(): void {}
-
-  onRowClick(productId: number): void {
-    this.rowClick.emit(productId);
-  }
 }
