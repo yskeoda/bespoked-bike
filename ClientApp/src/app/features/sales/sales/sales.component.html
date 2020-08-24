@@ -1,9 +1,10 @@
 <ng-container *ngIf="tableData$ | async as tableData; else loading">
   <button
-    mat-raised-button
+    mat-button
     color="primary"
     type="button"
     style="margin-bottom: 10px;"
+    (click)="onNewClick()"
   >
     New Sales
   </button>

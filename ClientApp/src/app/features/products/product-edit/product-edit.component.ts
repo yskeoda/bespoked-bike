@@ -19,7 +19,6 @@ export class ProductEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private snackBar: MatSnackBar

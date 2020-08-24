@@ -5,9 +5,10 @@ import { SalesRoutingModule } from './sales-routing.module';
 import { SalesTableComponent } from './sales-table/sales-table.component';
 import { SalesComponent } from './sales/sales.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewSalesComponent } from './new-sales/new-sales.component';
 
 @NgModule({
-  declarations: [SalesComponent, SalesTableComponent],
+  declarations: [SalesComponent, SalesTableComponent, NewSalesComponent],
   imports: [
     CommonModule,
     SalesRoutingModule,
