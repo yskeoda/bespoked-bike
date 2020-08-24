@@ -1,19 +1,10 @@
 import {
-  AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnInit,
-  ViewChild,
-  ChangeDetectionStrategy,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
 import { Product } from './../../../data/product/product.model';
-import {
-  ProductTableDataSource,
-  ProductTableItem,
-} from './product-table-datasource';
 
 @Component({
   selector: 'app-product-table',
