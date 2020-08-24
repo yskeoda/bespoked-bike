@@ -1,1 +1,57 @@
-<div>{{ productId }}</div>
+<ng-container *ngIf="product$ | async as product; else loading">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="productName" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Manufacturer</mat-label>
+        <input
+          matInput
+          placeholder="Manufacturer"
+          formControlName="manufacturer"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Style</mat-label>
+        <input matInput placeholder="Style" formControlName="style" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Sale Price</mat-label>
+        <input matInput placeholder="Sale Price" formControlName="salePrice" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>QTY</mat-label>
+        <input matInput placeholder="QTY" formControlName="qtyOnHand" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Commission Percentage</mat-label>
+        <input
+          matInput
+          placeholder="Commission Percentage"
+          formControlName="commissionPercentage"
+        />
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary">Save</button>
+  </form>
+</ng-container>
+<ng-template #loading
+  ><mat-progress-bar mode="indeterminate"></mat-progress-bar
+></ng-template>

@@ -32,6 +32,19 @@ namespace bespoked_bike.Controllers
             return products;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetById(int id)
+        {
+            var products = await _context.Product.FindAsync(id);
+
+            if (products == null)
+            {
+                return NotFound();
+            }
+
+            return products;
+        }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
